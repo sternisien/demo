@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 public class Voiture {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ma_sequence")
+  @SequenceGenerator(name = "ma_sequence", sequenceName = "voiture_seq", allocationSize = 1)
   @Column(name = "id")
   private Long id;
 
@@ -16,7 +18,7 @@ public class Voiture {
   private String immatriculation;
 
   @ManyToOne
-  @JoinColumn(name = "proprio_id")
+  @JoinColumn(name = "proprietaire_id")
   private Proprietaire proprietaire;
 
   // Getter pour l'attribut id
